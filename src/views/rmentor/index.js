@@ -149,8 +149,8 @@ class Rmentor extends React.Component {
         data.append("achievements", JSON.stringify(achievements));
         data.append("avatar", avatar);
 
-        this.props.register(data, (err, result) => {
-          if (result.code === 200) this.props.history.push("/");
+        this.props.register(data, (done, data) => {
+          if (done) this.props.history.push("/");
         });
       }
     });

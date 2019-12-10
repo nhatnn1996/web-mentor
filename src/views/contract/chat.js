@@ -125,7 +125,6 @@ const User = function(props) {
 const ListUser = function(props) {
   const classes = useStyles();
   const message = React.useRef("");
-
   const renter = props.value;
   const auth = renter.type === "user" ? renter.user : renter.mentor;
   const partner = renter.type === "user" ? renter.mentor : renter.user;

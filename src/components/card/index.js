@@ -13,7 +13,7 @@ import { URLIMG } from "../../service/config";
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
-    boxShadow: "none",
+    boxShadow: "0px 4px 18px rgba(0,0,0,.08)",
     position: "relative"
   },
   media: {

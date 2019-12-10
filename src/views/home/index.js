@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
-import socket from "../../service/socket";
+import React from "react";
 import Card from "../../components/card";
 import Grid from "@material-ui/core/Grid";
 import styled from "styled-components";
 import { connect } from "react-redux";
-
-import { Typography } from "@material-ui/core";
-
-// import Mentor from "../../components/mentor"
+import Category from "./category";
 
 const Item = styled.div`
   width: 19%;
@@ -22,9 +18,12 @@ function Home(props) {
       {mentors.length === 0 && <div className="text-center"> Loading... </div>}
       {mentors.length > 0 && (
         <div className="d-block">
-          <Typography variant="subtitle1" gutterBottom>
-            WEBSITE DESIGNER
-          </Typography>
+          <Category />
+          <h4 className="font-weight-bold mt-4"> Lập trình website </h4>
+          <p className="py-2 mb-1">
+            Các chuyên gia trong lĩnh vực lập trình trang web sẽ hướng dẩn các
+            bạn
+          </p>
           <Grid container>
             {mentors.map((element, index) => (
               <Item key={index}>

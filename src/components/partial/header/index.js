@@ -19,6 +19,13 @@ const Wrap = styled.div`
   position: relative;
   display: flex;
 `;
+const Notification = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f36f5a;
+  margin-left: 4px;
+`;
 const Currency = styled.span`
   svg {
     fill: #f36f5a;
@@ -83,8 +90,9 @@ class index extends Component {
             <Link
               style={{ borderRadius: "100px" }}
               to="/contract"
-              className="p-2 ml-3 shadow-sm px-3 text-dark">
+              className="p-2 ml-3 shadow-sm px-3 text-dark d-flex align-items-center">
               {this.props.renters.length} yêu cầu
+              {this.props.renters.length > 0 && <Notification />}
             </Link>
 
             {check && (

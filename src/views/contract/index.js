@@ -28,6 +28,8 @@ function Contract(props) {
     setIndex(i);
   };
 
+  const renter = props.renters[index] || props.renters[0];
+
   if (props.renters.length)
     return (
       <Grid container>
@@ -35,7 +37,7 @@ function Contract(props) {
           <User getIndex={getIndex} />
         </Grid>
         <Grid item xs={10}>
-          <Chat value={props.renters[index]} />
+          <Chat value={renter} />
         </Grid>
       </Grid>
     );

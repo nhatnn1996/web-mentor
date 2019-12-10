@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import Api from "../../service/api";
-import { LIST_MENTORS } from "../type";
+import { LIST_MENTORS, PROFILE } from "../type";
 dotenv.config();
 
 export const getGlobal = cb => {
@@ -18,7 +18,7 @@ export const getGlobal = cb => {
 
 export const mentors_online = (payload, cb) => {
   return function(dispatch) {
-    dispatch({type: LIST_MENTORS, payload })
+    dispatch({ type: LIST_MENTORS, payload });
   };
 };
 
@@ -27,7 +27,11 @@ export const register = (param, cb) => {
     Api()
       .post("mentor", param)
       .then(function(response) {
-        cb(true, response.data.data);
+        if (response.data.code === 200) {
+          dispatch({ type: PROFILE, payload: response.data.data });
+          localStorage.setItem("auth", JSON.stringify(response.data.data));
+          cb(true, response.data.data);
+        }
       })
       .catch(function(error) {
         cb(error, null);

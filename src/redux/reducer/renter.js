@@ -10,10 +10,9 @@ function renters(state = init, action) {
   const { payload } = { ...action };
   switch (action.type) {
     case ADD_RENTERS:
-      const i = state.findIndex(
-        element => element.user._id === payload.user._id
-      );
+      const i = state.findIndex(element => element.user.id === payload.user.id);
       if (i < 0) {
+        payload.message = [];
         state.unshift(payload);
         window.localStorage.setItem("renters", JSON.stringify(state));
       }

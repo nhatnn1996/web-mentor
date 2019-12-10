@@ -55,7 +55,6 @@ function Handle(props) {
 }
 
 const Action = props => {
-  console.log(props);
   const classes = useStyles();
   const accept = () => {
     props.reply(true)();
@@ -64,10 +63,14 @@ const Action = props => {
   return (
     <>
       {props.type === "user" && (
-        <Typography className={classes.typo}>
-          <span>Lưu ý </span>: Tiết học đã bắt đầu. Không chuyển trang hoặc
-          thoát ra
-        </Typography>
+        <Button
+          onClick={props.reply(false)}
+          variant="contained"
+          size="small"
+          className="ml-3"
+          color="default">
+          Hủy
+        </Button>
       )}
       {props.type === "mentor" && (
         <>
