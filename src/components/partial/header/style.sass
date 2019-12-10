@@ -1,0 +1,66 @@
+.header
+    padding: 12px 0px
+    background: white
+    border-bottom: thin solid #e1e1e
+    position: sticky
+    top: 0
+    z-index: 1000
+    .logo
+        img
+            height: 35px
+    .search
+        margin-left: 30px
+        position: relative
+        &-group
+            background: #efeff4
+            border-radius: 100px
+            input
+                transition: .3s ease-in-out
+                min-width: 300px
+                padding: 6px 20px
+                background: none
+                border: none
+                height: auto
+                border-radius: 100px
+                &:focus
+                    outline: none
+                    background: white
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2)
+        i
+            position: absolute
+            top: 50%
+            transform: translate( -100%,-50%)
+            right: 0
+            color: #333
+            cursor: pointer
+    .action
+        margin-left: auto
+        ul
+            list-style: none
+            margin: 0
+            padding: 0
+            li
+                border-radius: 100px
+                display: flex
+                justify-content: center
+                align-items: center
+                padding: 4px 15px
+                color: white
+                cursor: pointer
+                transition: .3s ease-in-out
+                white-space: nowrap
+                &:hover
+                    box-shadow: 0px 3px 8px rgba(0, 0, 0, .2)
+        &-register
+            background: #1f9ffc
+            a
+                text-decoration: none
+                color: white
+        &-login
+            background: #ff9e6a
+            a
+                text-decoration: none
+                color: white
+    .info
+        position: relative
+        &:hover

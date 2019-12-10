@@ -1,0 +1,41 @@
+.App
+    footer
+        position: fixed
+        display: flex
+        justify-content: center
+        bottom: 0
+        left: 0
+        background: white
+        width: 100%
+        box-shadow: 0px -10px 24px rgba(0, 0, 0, .2)
+        .tab
+            padding: 14px 18px
+            font-weight: 600
+            color: #aaa
+            text-decoration: none
+            svg
+                height: 20px
+                fill: #aaa
+                margin-right: 5px
+            span
+                white-space: nowrap
+        .tab.active
+            color: #333
+            text-decoration: none
+            &:active
+                text-decoration: none
+            *
+                text-decoration: none
+            svg
+                height: 20px
+                fill: #000
+@media screen and ( max-width: 400px)
+    footer
+        .tab
+            padding: 14px 12px
+            span
+                font-size: .9rem
+@media screen and ( min-width: 1024px)
+    .App
+        footer
+            display: none
