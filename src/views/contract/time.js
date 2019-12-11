@@ -21,22 +21,19 @@ const useStyles = makeStyles(theme => ({
 
 const Time = function(props) {
   const classes = useStyles();
-  const [accept, setAccept] = useState(false);
-  const [time, setTime] = useState(props.value.time * 60 * 60);
-  useEffect(() => {
-    socket.on("accept_contract", data => {
-      if (data.accept) {
-        setAccept(true);
-        props.changeAccept(true);
-      }
-    });
-  });
+  const { value } = props;
+  console.log(value.start);
+  const timeSurPlus = (Date.parse(new Date()) - (value.start || 0)) / 1000;
+  const [time, setTime] = useState(props.value.time * 20 - timeSurPlus);
 
-  if (time !== 0 && accept) {
-    setTimeout(() => {
+  console.log("hakjshdk");
+  if (value.accept) {
+    let t = setTimeout(() => {
       setTime(time - 1);
     }, 1000);
+    if (time <= 0) clearTimeout(t);
   }
+
   return (
     <Box className={classes.card}>
       <Box
@@ -57,7 +54,9 @@ function handleTime(time) {
   minute = minute > 10 ? minute : "0" + minute;
   let second = parseInt((time % 60) % 60);
   second = second > 10 ? second : "0" + second;
-  return hours + ":" + minute + ":" + second;
+  if (time <= 0) {
+    return " 00 " + ":" + " 00 " + ":" + " 00 ";
+  } else return hours + ":" + minute + ":" + second;
 }
 
 const mapState = state => ({ contract: state.contract });

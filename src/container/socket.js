@@ -14,7 +14,7 @@ export const onSocket = function(props) {
   });
 
   socket.on("cancel-contract", data => {
-    props.removeRenter({ room: data.room });
+    props.removeRenter({ room: data.room, start: data.start });
   });
 
   socket.on("chat", data => {

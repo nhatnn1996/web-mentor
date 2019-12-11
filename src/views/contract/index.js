@@ -51,7 +51,7 @@ function Contract(props) {
   }
 }
 
-const mapState = state => ({ renters: state.renters });
+const mapState = state => ({ renters: state.renters, mentors: state.mentors });
 export default connect(
   mapState,
   null

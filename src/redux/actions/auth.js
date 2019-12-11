@@ -24,8 +24,7 @@ export const login_by_google = (param, cb) => {
 
 export const logout_account = cb => {
   return function(dispatch) {
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("auth");
+    localStorage.clear();
     dispatch({ type: type.LOGOUT_ACCOUNT, payload: null });
     cb(true);
   };
@@ -112,11 +111,16 @@ export const verify = (payload, cb) => {
 };
 
 export const verify_again = () => {
+  console.log("run");
   Api()
-    .get("user/verify-again", null)
+    .post("user/verify-again", null)
     .then(response => {
+      console.log(response);
       if (response.data.code !== 200) {
       }
+    })
+    .catch(error => {
+      console.log(error);
     });
 };
 

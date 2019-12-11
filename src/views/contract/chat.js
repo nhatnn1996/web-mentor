@@ -126,8 +126,10 @@ const ListUser = function(props) {
   const classes = useStyles();
   const message = React.useRef("");
   const renter = props.value;
+
   const auth = renter.type === "user" ? renter.user : renter.mentor;
   const partner = renter.type === "user" ? renter.mentor : renter.user;
+
   const onEditText = e => {
     if (e.keyCode === 13 && message.current.value.trim() !== "") {
       const data = {
@@ -149,7 +151,7 @@ const ListUser = function(props) {
           {partner.name}
         </Typography>
         <div className="ml-auto d-flex align-items-center">
-          <Time value={props.value} />
+          <Time value={renter} />
           <Action renter={renter} />
         </div>
       </Box>
@@ -190,5 +192,4 @@ const ListUser = function(props) {
     </Box>
   );
 };
-
 export default ListUser;

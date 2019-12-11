@@ -31,7 +31,10 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: "1.2rem",
-    fontWeight: "600"
+    fontWeight: "600",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between"
   },
   textEllipsis: {
     overflow: "hidden",
@@ -56,11 +59,17 @@ const useStyles = makeStyles({
     background: "white",
     borderRadius: "3px 0px 0px 3px",
     padding: "2px 6px"
+  },
+  status: {
+    width: 10,
+    height: 10,
+    background: props => (props.value.status === "online" ? "green" : "red"),
+    borderRadius: "50%"
   }
 });
 
 export default function MediaCard(props) {
-  const classes = useStyles();
+  const classes = useStyles(props);
   const { value } = props;
   return (
     <Card className={classes.card}>
@@ -78,7 +87,10 @@ export default function MediaCard(props) {
             title="Contemplative Reptile"
           />
           <CardContent className="px-3 py-4">
-            <div className={classes.title}>{value.name}</div>
+            <div className={classes.title}>
+              {value.name}
+              <div className={classes.status}></div>
+            </div>
             <Typography
               variant="body2"
               gutterBottom

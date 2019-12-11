@@ -66,6 +66,7 @@ class Custom extends React.Component {
 
             {!info.active && (
               <Switch>
+                <DefaultTemplate path="/" component={VerifySuccess} />
                 <DefaultTemplate path="/verify" component={Verify} />
                 <Route path="*">
                   <Redirect to="/verify" />

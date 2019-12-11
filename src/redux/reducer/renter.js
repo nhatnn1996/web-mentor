@@ -33,7 +33,9 @@ function renters(state = init, action) {
 
     case ACCEPT_RENTER:
       const indexAccept = state.findIndex(e => e.room === payload.room);
-      state[indexAccept].accpet = true;
+      state[indexAccept].accept = true;
+      state[indexAccept].start = payload.start;
+      window.localStorage.setItem("renters", JSON.stringify(state));
       return (state = [...state]);
 
     case CANCEL_RENTER:
