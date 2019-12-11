@@ -10,11 +10,11 @@ export const onSocket = function(props) {
   });
 
   socket.on("accept-contract", data => {
-    props.changeAccept({ room: data.room });
+    props.changeAccept(data);
   });
 
   socket.on("cancel-contract", data => {
-    props.removeRenter({ room: data.room, start: data.start });
+    props.removeRenter({ room: data.room });
   });
 
   socket.on("chat", data => {

@@ -10,7 +10,7 @@ import PlayIcon from "../../icon/play";
 import ProfileIcon from "../../icon/profile";
 import "./style.sass";
 function mapStateToProps(state) {
-  return {};
+  return { user: state.auth };
 }
 class index extends Component {
   render() {

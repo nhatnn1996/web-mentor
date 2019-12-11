@@ -1,6 +1,7 @@
 import React from "react";
 import Swiper from "react-id-swiper";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import "swiper/css/swiper.css";
 
 function Categorys(props) {
@@ -83,8 +84,10 @@ const useStyled = makeStyles({
   wrap: {
     borderRadius: "8px",
     boxShadow: "0px 4px 20px rgba(0,0,0,.08)",
-    margin: "5px 0 25px 0",
-    overflow: "hidden"
+    margin: "10px 0 25px 0",
+    overflow: "hidden",
+    display: "block",
+    color: "black"
   },
   title: {
     padding: "10px",
@@ -95,13 +98,13 @@ const useStyled = makeStyles({
 function Item(props) {
   const classes = useStyled();
   return (
-    <div className={classes.wrap}>
+    <Link to="/specialized" className={classes.wrap}>
       <img className={classes.img} src={props.src} alt="" />
       <div className={classes.title}>
         <p className="mb-0">{props.title}</p>
         <p className="font-weight-light text-truncate mb-1">{props.content} </p>
       </div>
-    </div>
+    </Link>
   );
 }
 

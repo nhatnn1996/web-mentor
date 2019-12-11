@@ -10,13 +10,13 @@ function renters(state = init, action) {
   const { payload } = { ...action };
   switch (action.type) {
     case ADD_RENTERS:
-      const i = state.findIndex(element => element.user.id === payload.user.id);
-      if (i < 0) {
-        payload.message = [];
-        state.unshift(payload);
-        window.localStorage.setItem("renters", JSON.stringify(state));
+      const i = state.findIndex(element => element.room === payload.room);
+      if (i >= 0) {
+        state.splice(i, 1);
       }
-
+      payload.message = [];
+      state.unshift(payload);
+      window.localStorage.setItem("renters", JSON.stringify(state));
       return (state = [...state]);
     case ADD_MESSAGE:
       const index = state.findIndex(e => e.room === payload.room);
@@ -33,8 +33,8 @@ function renters(state = init, action) {
 
     case ACCEPT_RENTER:
       const indexAccept = state.findIndex(e => e.room === payload.room);
-      state[indexAccept].accept = true;
-      state[indexAccept].start = payload.start;
+      state.splice(indexAccept, 1);
+      state.unshift(payload);
       window.localStorage.setItem("renters", JSON.stringify(state));
       return (state = [...state]);
 

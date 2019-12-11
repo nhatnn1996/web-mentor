@@ -31,6 +31,7 @@ const User = function(props) {
     props.value.type === "user"
       ? { ...props.value.mentor }
       : { ...props.value.user };
+  // const location = props.value.type === "user" ? "mentor " : "user";
   value.avatar = URLIMG + value.avatar;
   return (
     <CardActionArea onClick={props.getIndex} className={classes.cardAction}>

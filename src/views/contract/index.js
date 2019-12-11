@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
+import Grid from "@material-ui/core/Grid";
+
 import Chat from "./chat";
 import User from "./user";
 

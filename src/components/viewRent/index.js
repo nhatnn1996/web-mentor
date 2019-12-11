@@ -35,7 +35,6 @@ const Root = styled.div`
 function ViewRent(props) {
   let history = useHistory();
   const time = useRef(null);
-  console.log(props.value);
   const send = () => {
     const date = new Date();
     const data = {
@@ -47,10 +46,8 @@ function ViewRent(props) {
       accept: null,
       message: []
     };
-    console.log(data);
     socket.emit("connect-mentor", data);
-    socket.on("create-room", room => {
-      data.room = room;
+    socket.on("create-room", data => {
       props.add_renter(data);
       history.push("/contract");
     });

@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { createContract } from "../../redux/actions/contract";
@@ -55,14 +54,14 @@ function Handle(props) {
 }
 
 const Action = props => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const accept = () => {
     props.reply(true)();
   };
 
   return (
     <>
-      {props.type === "user" && (
+      {props.type === "user" && props.accept === null && (
         <Button
           onClick={props.reply(false)}
           variant="contained"
@@ -72,7 +71,10 @@ const Action = props => {
           Hủy
         </Button>
       )}
-      {props.type === "mentor" && (
+      {props.type === "user" && props.accept === true && (
+        <i className="font-weight-light">Tiết học bắt đầu.</i>
+      )}
+      {props.type === "mentor" && props.accept === null && (
         <>
           <Button
             onClick={props.reply(false)}
@@ -91,6 +93,9 @@ const Action = props => {
             Bắt đầu
           </Button>
         </>
+      )}
+      {props.type === "mentor" && props.accept === true && (
+        <i className="font-weight-light">Tiết học bắt đầu.</i>
       )}
     </>
   );
